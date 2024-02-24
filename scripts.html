@@ -75,31 +75,35 @@
         }
     
         .card {
-            background-color: white;
-            height: auto;
+            background-color: transparent;
+            height: 170px;
             border-radius: 10px;
             padding: 25px;
             text-align: left;
             position: relative;
-            transition: transform 0.3s ease;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* Change the color on hover */
         }
     
         .card img {
-            width: 70px;
-            height: 70px;
+            width: 100%;
+            height: 170px;
             border-radius: 10px;
             position: absolute;
-            right: 15px;
-            top: 15px;
+            top: 0;
+            right: 0;
         }
     
-    
         .card h3 {
-            color: black;
+            color: white;
             font-family: system-ui, -apple-system, sans-serif;;
             margin-top: 5px;
             position: relative;
-            top: -30px;
+            bottom: -140px;
             right: 10px;
         }
     
@@ -110,25 +114,6 @@
         .card a {
             display: block;
             text-decoration: none;
-        }
-    
-        .card button {
-            position: absolute;
-            bottom: 10px;
-            left: 40%;
-            transform: translateX(-50%);
-            background-color: black;
-            color: white;
-            font-family: system-ui, -apple-system, sans-serif;
-            border: none;
-            padding: 13px 50px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-    
-        .card button:hover {
-            background-color: grey;
         }
 
         .burger-menu {
@@ -192,7 +177,6 @@
             background-color: grey;
         }
 
-        
         .menu-open {
             display: block;
             height: auto;/
@@ -204,106 +188,93 @@
             }
         }
     </style>
-    
-
 </head>
 <body>
-
-
-    <h1 class="title">Astra | IPA's</h1>
-
-                  <!-- Burger Menu -->
+    <h1 class="title">Astra | Scripts</h1>
+    <!-- Burger Menu -->
     <div class="burger-menu" onclick="toggleBurgerMenu()">
         <div></div>
         <div></div>
         <div></div>
     </div>
-    
     <div class="menu" id="menu">
         <a href="index.html">Home</a>
-        <a href="#">Scripts</a>
+        <a href="scripts.html">Scripts</a>
         <a href="#">Signer</a>
         <a href="certificates.html">Certificates</a>
         <a href="#">Discord Bot</a>
     </div>
-    
-    
     <script>
         function toggleBurgerMenu() {
             var burgerMenu = document.querySelector('.burger-menu');
             var menu = document.getElementById('menu');
-    
             burgerMenu.classList.toggle('open');
             menu.classList.toggle('menu-open');
         }
     </script>
-
     <div class="container">
         <input class="search" type="text" id="searchInput" placeholder="Search by card title">
         <div id="cardContainer" class="card-grid"></div>
     </div>
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const cards = [
-
                 {
-                    title: "Scarlet",
-                    image: "images/image/astra.png",
+                    title: "Pet Simulator 99",
+                    image: "images/card-image/ps99.png",
                     link: "https://jailbreak.com/ps99",
                 },
                 {
                     title: "GBox",
-                    image: "images/app-icons/scarlet.jpeg",
+                    image: "images/card-image/test.png",
                     link: "https://jailbreak.com/ps99",
                 },
                 {
                     title: "ESign",
-                    image: "card-image/jailbreak.png",
+                    image: "images/card-image/test.png",
                     link: "https://jailbreak.com/ps99",
                 },
+                {
+                    title: "New Card 1",
+                    image: "images/card-image/test.png",
+                    link: "https://example.com",
+                },
+                {
+                    title: "New Card 2",
+                    image: "images/card-image/test.png",
+                    link: "https://example.com",
+                },
             ];
-
             const searchInput = document.getElementById("searchInput");
             const cardContainer = document.getElementById("cardContainer");
-
             function renderCards(query) {
                 cardContainer.innerHTML = "";
-
-                const filteredCards = cards.filter(card =>
-                    card.title.toLowerCase().includes(query.toLowerCase())
-                );
-
+                const filteredCards = cards.filter(card => card.title.toLowerCase().includes(query.toLowerCase()));
                 filteredCards.forEach(card => {
                     const cardElement = document.createElement("div");
                     cardElement.classList.add("card");
-
-                    cardElement.innerHTML = `
-                        <h3>${card.title}</h3>
-                        <button onclick="window.location.href='${card.link}'">Download</button>
-                    `;
-
+                    cardElement.addEventListener("click", function() {
+                        window.location.href = card.link;
+                    });
                     if (card.image) {
                         const imgElement = document.createElement("img");
                         imgElement.src = card.image;
                         cardElement.appendChild(imgElement);
                     }
-
+                    const titleElement = document.createElement("h3");
+                    titleElement.textContent = card.title;
+                    cardElement.appendChild(titleElement);
                     cardContainer.appendChild(cardElement);
                 });
             }
-
             searchInput.addEventListener("input", function () {
                 renderCards(searchInput.value);
             });
-
             renderCards("");
         });
     </script>
-
-<footer>
-    &copy; 2024 Astra. All rights reserved.
-</footer>
-
+    <footer>
+        &copy; 2024 Astra. All rights reserved.
+    </footer>
 </body>
 </html>
