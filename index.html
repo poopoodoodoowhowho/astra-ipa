@@ -21,158 +21,107 @@
     <meta property="og:url" content="https://www.astra-ipa.com">
 
     <style>
-body {
-    margin: 0;
-    padding: 0;
-    background-color: black;
-    color: white;
-}
-
-.title {
-    margin-top: 2px;
-    margin-left: 4px;
-    color: white;
-    font-family: 'CustomFont';
-    font-size: 30px;
-}
-
-.search {
-    background-color: white;
-    color: black;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-.container {
-    max-width: 90%;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    background-color: white;
-    height: 40px;
-    border-radius: 10px;
-    padding: 25px;
-    text-align: left;
-    position: relative;
-    transition: transform 0.3s ease;
-}
-
-.card img {
-    width: 70px;
-    height: 70px;
-    border-radius: 10px;
-    position: relative;
-    right: -80%;
-    top: -140%;
-}
-
-/* Define custom font */
-@font-face {
-    font-family: 'CustomFont';
-    src: url('font/Nunito-VariableFont_wght.ttf') format('truetype');
-}
-
-.card h3 {
-    color: black;
-    font-family: 'CustomFont';
-    margin-top: 1px;
-    margin-right: -20%;
-    margin-left: -15%;
-    position: relative;
-    left: 78%;
-    transform: translateX(-50%);
-    top: -60%; 
-}
-
-.card p {
-    margin: 10px 0;
-}
-
-.card a {
-    display: block;
-    text-decoration: none;
-}
-
-.card button {
-    position: absolute;
-    bottom: 10px;
-    left: 40%;
-    transform: translateX(-50%);
-    background-color: black;
-    color: white;
-    font-family: 'CustomFont';
-    border: none;
-    padding: 13px 50px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.card button:hover {
-    background-color: grey;
-}
-
-@media (max-width: 768px) {
-    .container {
-        position: relative;
-        right: 3%;
-    }
-    .card img {
-        position: relative;
-        bottom: -15px;
-        left: 230px;
-        
-    }
-}
-
-@media (max-width: 480px) {
-    .card-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 320px) {
-    .container {
-        position: relative;
-        max-width: 90%;
-        right: -4%;
-    }
-
-    .card img {
-        position: relative;
-        bottom: -15px;
-        left: 190px;  
-    }
-
-}
-
-@media (max-width: 375px) {
-    .container {
-        position: relative;
-        right: 1%;
-    }
-}
-
-@media (max-width: 425px) {
-    .container {
-        position: relative;
-        right: -2%;
-        max-width: auto;
-    }
-
-}
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+        }
+    
+        .title {
+            margin-top: 2px;
+            margin-left: 4px;
+            color: white;
+            font-family: 'CustomFont';
+            font-size: 30px;
+        }
+    
+        .search {
+            background-color: white;
+            color: black;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    
+        .container {
+            max-width: 90%;
+            margin: 0 auto;
+            text-align: center;
+        }
+    
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+    
+        .card {
+            background-color: white;
+            height: auto;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: left;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+    
+        .card img {
+            width: 70px;
+            height: 70px;
+            border-radius: 10px;
+            position: absolute;
+            right: 15px;
+            top: 15px;
+        }
+    
+        /* Define custom font */
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('font/Nunito-VariableFont_wght.ttf') format('truetype');
+        }
+    
+        .card h3 {
+            color: black;
+            font-family: 'CustomFont';
+            margin-top: 5px;
+            position: relative;
+            top: -30px;
+            right: 10px;
+        }
+    
+        .card p {
+            margin: 10px 0;
+        }
+    
+        .card a {
+            display: block;
+            text-decoration: none;
+        }
+    
+        .card button {
+            position: absolute;
+            bottom: 10px;
+            left: 40%;
+            transform: translateX(-50%);
+            background-color: black;
+            color: white;
+            font-family: 'CustomFont';
+            border: none;
+            padding: 13px 50px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        .card button:hover {
+            background-color: grey;
+        }
     </style>
+    
+
 </head>
 <body>
     <ins class="adsbygoogle"
