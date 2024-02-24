@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-adsense-account" content="ca-pub-8380101823127601">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="700x700" href="images/astra.jpg">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Astra">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <title>Astra</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+        }
+
+        .title {
+            margin-top: 2px;
+            margin-left: 4px;
+            color: white;
+            font-family: sans-serif;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .button-link {
+            text-decoration: none;
+        }
+
+        .button {
+            background-color: white;
+            color: black;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            font-family: sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            border-radius: 7px;
+            border: none;
+            border-color: black;
+            display: block;
+            margin: 20px auto;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .button img {
+            width: 20px;
+            height: 20px;
+            margin-bottom: 5px;
+        }
+
+        .button:hover {
+            background-color: grey;
+        }
+
+        .search {
+            background-color: white;
+            color: black;
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 80%;
+            padding: 10px;
+            box-sizing: border-box;
+            display: block;
+        }
+
+        .container {
+            max-width: 90%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .card img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            margin: 10px auto;
+        }
+
+        .card h3 {
+            color: black;
+            margin-bottom: 5px;
+            margin-top: 0;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .button1 {
+            background-color: black;
+            color: white;
+            padding: 12px 20px;
+            margin-top: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            font-family: sans-serif;
+            display: inline-block;
+        }
+
+        .button1:hover {
+            background-color: grey;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .search {
+                width: 100%;
+            }
+
+            .button {
+                width: 100%;
+            }
+        }
+
+        /* iPhone Styles */
+        @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+            .button {
+                font-size: 14px;
+            }
+        }
+
+        /* iPad Styles */
+/* iPad Styles */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .button {
+        font-size: 18px;
+    }
+
+    .card img {
+        margin-left: -90px !important; /* Added !important */
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+    data-ad-slot="xxxxxxxxxx"
+    data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <h1 class="title">Astra | Home</h1>
+    
+    <a href="" class="button-link">
+        <button class="button sign">
+            <img src="images/sign.png" alt="Button Image">
+            <br>
+            signer
+        </button>
+    </a>
+
+    <a href="" class="button-link">
+        <button class="button cert">
+            <img src="images/file.png" alt="Button Image">
+            <br>
+            certs
+        </button>
+    </a>
+
+    <div class="container">
+        <input class="search" type="text" id="searchInput" placeholder="Search by card title">
+        <div id="cardContainer" class="card-grid"></div>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Sample card data
+        const cards = [
+            {
+                title: "App Name",
+                buttonLink1: "pages/apps/cashapp.html",
+                image: "images/astra.jpg",
+            },
+            {
+                title: "App Name",
+                buttonLink1: "#",
+                image: "images/astra.jpg",
+            },
+            {
+                title: "App Name",
+                buttonLink1: "#",
+                image: "images/astra.jpg",
+            },
+            {
+                title: "App Name",
+                buttonLink1: "#",
+                image: "images/astra.jpg",
+            },
+        ];
+
+        const searchInput = document.getElementById("searchInput");
+        const cardContainer = document.getElementById("cardContainer");
+
+        // Function to render cards based on the search input
+        function renderCards(query) {
+            cardContainer.innerHTML = ""; // Clear previous results
+
+            // Filter cards based on the search query
+            const filteredCards = cards.filter(card =>
+                card.title.toLowerCase().includes(query.toLowerCase())
+            );
+
+            // Display the filtered cards in the grid
+            filteredCards.forEach(card => {
+                const cardElement = document.createElement("div");
+                cardElement.classList.add("card");
+
+                // Add title and content
+                cardElement.innerHTML = `
+                    <h3>${card.title}</h3>
+                `;
+
+                // Add image if available
+                if (card.image) {
+                    const imgElement = document.createElement("img");
+                    imgElement.src = card.image;
+                    cardElement.appendChild(imgElement);
+                }
+
+                // Add buttons
+                const button1Element = document.createElement("a");
+                button1Element.classList.add("button1");
+                button1Element.textContent = "Install";
+                button1Element.href = card.buttonLink1;
+                button1Element.target = "_blank"; // Open link in a new tab
+                cardElement.appendChild(button1Element);
+
+                cardContainer.appendChild(cardElement);
+            });
+        }
+
+        // Event listener for the search input
+        searchInput.addEventListener("input", function () {
+            renderCards(searchInput.value);
+        });
+
+        // Initial rendering of all cards
+        renderCards("");
+    });
+    </script>
+
+</body>
+</html>

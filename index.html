@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-adsense-account" content="ca-pub-8380101823127601">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="700x700" href="images/astra.jpg">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Astra">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <title>Astra</title>
+
+    <!-- EMBED -->
+
+    <meta property="og:title" content="Astra">
+    <meta property="og:description" content="This website is designed for sideloading and discovering Roblox scripts.">
+    <meta property="og:image" content="/images/image/astra.png">
+    <meta property="og:url" content="https://www.astra-ipa.com">
+
+    <style>
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+}
+
+.title {
+    margin-top: 2px;
+    margin-left: 4px;
+    color: white;
+    font-family: 'CustomFont';
+    font-size: 30px;
+}
+
+.search {
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: white;
+    height: 40px;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: left;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.card img {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    position: relative;
+    right: -80%;
+    top: -140%;
+}
+
+/* Define custom font */
+@font-face {
+    font-family: 'CustomFont';
+    src: url('font/Nunito-VariableFont_wght.ttf') format('truetype');
+}
+
+.card h3 {
+    color: black;
+    font-family: 'CustomFont';
+    margin-top: 1px;
+    margin-right: -20%;
+    margin-left: -15%;
+    position: relative;
+    left: 78%;
+    transform: translateX(-50%);
+    top: -60%; 
+}
+
+.card p {
+    margin: 10px 0;
+}
+
+.card a {
+    display: block;
+    text-decoration: none;
+}
+
+.card button {
+    position: absolute;
+    bottom: 10px;
+    left: 40%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    font-family: 'CustomFont';
+    border: none;
+    padding: 13px 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+    background-color: grey;
+}
+
+@media (max-width: 768px) {
+    .container {
+        position: relative;
+        right: 3%;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 320px) {
+    .container {
+        position: relative;
+        max-width: 90%;
+        right: -4%;
+    }
+
+
+}
+
+@media (max-width: 375px) {
+    .container {
+        position: relative;
+        right: 1%;
+    }
+}
+
+@media (max-width: 425px) {
+    .container {
+        position: relative;
+        right: -2%;
+        max-width: auto;
+    }
+
+}
+    </style>
+</head>
+<body>
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+        data-ad-slot="xxxxxxxxxx"
+        data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <h1 class="title">Astra | Scripts</h1>
+
+    <div class="container">
+        <input class="search" type="text" id="searchInput" placeholder="Search by card title">
+        <div id="cardContainer" class="card-grid"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Sample card data
+            const cards = [
+                // ... (unchanged)
+
+                {
+                    title: "OP Jailbreak Autofarm",
+                    image: "images/image/astra.png",
+                    link: "https://jailbreak.com/ps99",
+                },
+                {
+                    title: "OP Jailbreak Autofarm",
+                    image: "images/app-icons/scarlet.jpeg",
+                    link: "https://jailbreak.com/ps99",
+                },
+                {
+                    title: "OP Jailbreak Autofarm",
+                    image: "card-image/jailbreak.png",
+                    link: "https://jailbreak.com/ps99",
+                },
+            ];
+
+            const searchInput = document.getElementById("searchInput");
+            const cardContainer = document.getElementById("cardContainer");
+
+            function renderCards(query) {
+                cardContainer.innerHTML = "";
+
+                const filteredCards = cards.filter(card =>
+                    card.title.toLowerCase().includes(query.toLowerCase())
+                );
+
+                filteredCards.forEach(card => {
+                    const cardElement = document.createElement("div");
+                    cardElement.classList.add("card");
+
+                    cardElement.innerHTML = `
+                        <h3>${card.title}</h3>
+                        <button onclick="window.location.href='${card.link}'">Download</button>
+                    `;
+
+                    if (card.image) {
+                        const imgElement = document.createElement("img");
+                        imgElement.src = card.image;
+                        cardElement.appendChild(imgElement);
+                    }
+
+                    cardContainer.appendChild(cardElement);
+                });
+            }
+
+            searchInput.addEventListener("input", function () {
+                renderCards(searchInput.value);
+            });
+
+            renderCards("");
+        });
+    </script>
+</body>
+</html>
