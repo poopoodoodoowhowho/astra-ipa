@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- TITLE -->
+
+    <meta name="apple-mobile-web-app-title" content="Astra">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/image/favicon.ico" type="image/x-icon">
+    <title>Astra | Signer</title>
+
+    <!-- EMBED -->
+
+    <meta property="og:title" content="Astra | Signer">
+    <meta property="og:description" content="Sign ipa files with a custom certificate.">
+    <meta property="og:image" content="/images/image/astra.png">
+    <meta property="og:url" content="https://www.astra-ipa.com">
+
+    <style>
+        body {
+        font-family: system-ui, -apple-system, sans-serif;
+         background-color: black;
+         margin: 0;
+         padding: 0;
+         min-height: 100vh;
+       }
+       form {
+         background-color: white;
+         padding: 30px;
+         border-radius: 10px;
+         width: 100%;
+         max-width: 500px;
+         position: relative;
+         top: -40px;
+       }
+       .centersign {
+         display: flex;
+         justify-content: center;
+       }
+       label {
+         display: block;
+         margin-bottom: 10px;
+         font-size: 14px;
+         color: black;
+         font-weight: bold;
+         font-family: system-ui, -apple-system, sans-serif;
+       }
+       
+       /* Customized file input */
+       .custom-file-input {
+         display: none;
+       }
+       
+       .custom-file-label {
+         background-color: black;
+         color: #fff;
+         padding: 10px 20px;
+         border: none;
+         border-radius: 6px;
+         cursor: pointer;
+         font-size: 16px;
+         transition: background-color 0.3s ease;
+         font-weight: bold;
+         font-family: system-ui, -apple-system, sans-serif;
+       }
+       
+       .custom-file-label:hover {
+         background-color: #333;
+       }
+       
+       /* Customized button */
+       .button {
+         background-color: black;
+         color: white;
+         padding: 12px 20px;
+         border: none;
+         border-radius: 6px;
+         cursor: pointer;
+         font-size: 16px;
+         transition: background-color 0.3s ease;
+         margin-bottom: 10px;
+         font-weight: bold;
+         font-family: system-ui, -apple-system, sans-serif;
+       }
+       
+       .button:hover {
+         background-color: grey;
+       }
+       
+       /* Custom Password Inputs*/
+       .p12passinput {
+         background-color: black;
+         color: white;
+         border: 0px;
+         border-radius: 100px;
+         padding: 12px;
+         margin-bottom: 10px;
+         display: block;
+         width: 100%;
+         box-sizing: border-box;
+         text-align: center;
+         font-weight: bold;
+         font-family: system-ui, -apple-system, sans-serif;;
+       }
+       
+       .navbar {
+         display: flex;
+         position: fixed;
+         width: 100%;
+         top: 0;
+         z-index: 11;
+         height: 56px;
+         overflow-x: auto;
+         background-color: #141016;
+         border-bottom: 1px solid #9877A5;
+       }
+       
+       .button-container {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           gap: 15px;
+           white-space: nowrap;
+           padding-left: 106px;
+           padding-right: 106px;
+       }
+       
+       .navlink {
+           text-decoration: none;
+       }
+       
+       .navtxt {
+           text-decoration: none;
+           border-radius: 24px;
+           border: 1px solid transparent;
+           padding: .4em 1.2em;
+           font-size: 16px;
+           font-weight: 600;
+           font-family: system-ui, -apple-system, sans-serif;
+           color: #000;
+           background-color: #e8e8ed;
+           cursor: pointer;
+           transition: opacity .25s, background-color .25s, color .25s;
+           margin: 0;
+       }
+       
+       .navtxt:hover {
+         opacity: 0.7;
+       }
+       
+       .navtxt:active {
+         opacity: 1;
+         background-color: black;
+         color: white
+       }
+       
+       .paperimg {
+         height: 40px; 
+         margin-right: 10px;
+         transition: transform 0.65s;
+       }
+       
+       .paperimg:hover {
+         transform: rotate(365deg);
+       }
+       
+       .paperimg:active {
+         transform: scale(0.9);
+       }
+       
+         @media (max-width: 700px) {
+         .navbar {
+             width: auto;
+         }
+         .navtxt {
+             font-size: 14px;
+         }
+         .button-container {
+             padding-left: 10px;
+             padding-right: 600px;
+         }
+         }
+         
+         .overlay {
+             display: none;
+             position: fixed;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             background-color: rgba(0, 0, 0, 0.5);
+             align-items: center; 
+             justify-content: center;
+             z-index: 1000;
+             color: white;
+         }       
+       
+       .popup {
+             background-color: #141016;
+             padding: 20px;
+             border-radius: 10px;
+             box-shadow: 0 0 10px #9877A55a;
+             max-width: 400px;
+             text-align: center;
+             position: relative; /* Added to make the position of .close-btn relative to .popup */
+         }
+       
+         .close-btn {
+             cursor: pointer;
+             position: absolute;
+             top: 10px;
+             right: 10px;
+             font-size: 20px;
+             color: #ffffff; /* Added color for better visibility */
+         }
+       
+         .title {
+             margin-top: -25px;
+             margin-left: 4px;
+             color: white; /* Moved the color property here */
+             font-family: system-ui, -apple-system, sans-serif;
+           }
+
+           .burger-menu {
+            cursor: pointer;
+            font-size: 24px;
+            color: #333;
+            padding: 15px;
+            position: fixed;
+            top: -15px;
+            right: 0;
+            z-index: 1000;
+            transition: 0.4s;
+        }
+
+        .burger-menu div {
+            width: 35px;
+            height: 5px;
+            background-color: white;
+            margin: 6px 0;
+            transition: transform 0.4s, opacity 0.4s;
+        }
+
+        .burger-menu.open div:nth-child(1) {
+            transform: rotate(-45deg) translate(-9px, 6px);
+        }
+
+        .burger-menu.open div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.open div:nth-child(3) {
+            transform: rotate(45deg) translate(-8px, -8px);
+        }
+
+        .menu {
+            display: none;
+            margin-top: -30px;
+            position: fixed;
+            top: 70px;
+            right: 0;
+            width: 150px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            overflow: hidden;
+            height: 0;
+            transition: height 0.3s;
+        }
+
+        .menu a {
+            display: block;
+            padding: 15px;
+            text-decoration: none;
+            color: black;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .menu a:hover {
+            background-color: grey;
+        }
+
+        .menu-open {
+            display: block;
+            height: auto;/
+        }
+
+           @media screen and (max-width: 500px) {
+            .title {
+                font-size: 23px;
+            }
+        }
+         </style>
+  
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const fileInputs = document.querySelectorAll('.custom-file-input');
+    
+            fileInputs.forEach(function (input) {
+                input.addEventListener('change', function () {
+                    const maxFileNameLength = 15;
+                    const fileName = this.files[0].name;
+                    let displayedFileName = fileName.length <= maxFileNameLength
+                        ? fileName
+                        : fileName.substring(0, maxFileNameLength) + '...';
+    
+                    const label = this.previousElementSibling; // Get the previous element, which is the label
+                    label.textContent = displayedFileName;
+                });
+            });
+        });
+    </script>
+  
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const overlay = document.querySelector('.overlay');
+  
+            // Check if the app is running in standalone mode (PWA)
+            if (!window.matchMedia('(display-mode: standalone)').matches) {
+                // Show the overlay and pop-up only if not in standalone mode
+                overlay.style.display = 'flex';
+  
+                // Close the pop-up when clicking the close button
+                document.querySelector('.close-btn').addEventListener('click', function () {
+                    overlay.style.display = 'none';
+                });
+            }
+        });
+    </script>
+  </head>
+  
+  <body>
+  
+  <h1 class="title">Astra | Signer</h1>
+
+  <div class="burger-menu" onclick="toggleBurgerMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<div class="menu" id="menu">
+    <a href="index.html">Home</a>
+    <a href="scripts.html">Scripts</a>
+    <a href="signer.html">Signer</a>
+    <a href="certificates.html">Certificates</a>
+    <a href="#">Discord Bot</a>
+</div>
+<script>
+    function toggleBurgerMenu() {
+        var burgerMenu = document.querySelector('.burger-menu');
+        var menu = document.getElementById('menu');
+        burgerMenu.classList.toggle('open');
+        menu.classList.toggle('menu-open');
+    }
+</script>
+   
+   
+    <div class="centersign" style="padding-top: 86;">
+  
+        <form method="post" action="https://api.casp.dev/upload.php" enctype="multipart/form-data" id="uploadForm" name="uploadForm">
+            <center>
+                <label>3 GB File Upload Limit</label>
+            </center>
+    
+            <label for="p12" class="custom-file-label">
+                <span>.P12 File</span>
+            </label>
+            <input type="file" id="p12" name="p12" accept=".p12" class="custom-file-input" required>
+      
+            <label for="mobileprovision" class="custom-file-label">
+                <span>.MobileProvision File</span>
+            </label>
+            <input type="file" id="mobileprovision" name="mobileprovision" accept=".mobileprovision" class="custom-file-input" required>
+      
+            <label for="ipa" class="custom-file-label">
+                <span>.IPA File</span>
+            </label>
+            <input type="file" id="ipa" name="ipa" accept=".ipa" required="" class="custom-file-input">
+            <center>
+            <label for="pass" class="p12passlabel">Password of the certificate</label>
+            </center>
+            <input type="text" id="pass" name="pass" placeholder="Example: AppleP12.com" class="p12passinput">
+            <center>
+              <input type="submit" class="button" value="SIGN">
+            </center>
+            <center>
+                <label> Powered by EonHub API</label>
+                <label> Please use anti revoke before sideloading.</label>
+            </center>
+        </form>
+  
+    </div>
+
+</body>
+</html>
