@@ -1,166 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="google-adsense-account" content="ca-pub-8380101823127601">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- TITLE -->
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="700x700" href="images/astra.jpg">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Astra">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="images/image/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <title>Astra</title>
-
-    <!-- EMBED -->
-
-    <meta property="og:title" content="Astra">
-    <meta property="og:description" content="Blade Ball Script">
-    <meta property="og:image" content="/images/image/astra.png">
-    <meta property="og:url" content="https://www.astra-ipa.com">
 <style>
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: black;
-    color: white;
-    text-align: center;
-    font-family: system-ui, -apple-system, sans-serif;
-}
-
-.title {
-    margin-top: 2px;
-    margin-left: 4px;
-    color: white;
-    font-family: sans-serif;
-    font-size: 30px;
-    text-align: left;
-    font-family: system-ui, -apple-system, sans-serif;
-}
-
-.card {
-    background-color: white;
-    color: black;
-    width: 25%;
-    height: 50px;
-    border-radius: 10px;
-    padding: 20px;
-    overflow: hidden;
-    font-family: system-ui, -apple-system, sans-serif;
-    word-wrap: break-word;
-    position: relative;
-    margin: 0 auto;
-}
-
-.card-text {
-    font-size: 17px;
-    position: relative;
-    top: -30px;
-}
-
-button {
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 16px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-family: system-ui, -apple-system, sans-serif;
-}
-
-button:hover {
-    background-color: grey;
-}
-
-.back {
-    background-color: white;
-    color: black;
-    position: relative;
-    right: 690px;
-    bottom: 20px;
-    font-family: system-ui, -apple-system, sans-serif;
-}
-
-.script-title {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-footer {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
             background-color: black;
             color: white;
-            padding: 10px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            font-family: system-ui, -apple-system, sans-serif;
         }
 
-@media screen and (max-width: 500px) {
-    .title {
-        font-size: 23px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .card {
-        width: 80%;
-    }
-}
-
-@media screen and (max-width: 320x) {
-    .card {
-        height: 60px;
-    }
-}
+        .title {
+            margin-top: 2px;
+            margin-left: 4px;
+            color: white;
+            font-family: sans-serif;
+            font-size: 30px;
+        }
 
 </style>
 </head>
-
-
 <body>
 
-    <h1 class="title">Astra</h1>
-
-    <button class="back" onclick="goBack()">Back</button>
-
-    <p class="script-title">Blade Ball</p>
-
-    <div class="card">
-        <p class="card-text" id="cardText">loadstring(game:HttpGet("https://raw.githubusercontent.com/Omgshit/Scripts/main/MainLoader.lua"))()</p>
-    </div>
-      
-    <button class="join">Join Game</button>
-    <button class="copy" id="copyButton" onclick="copyText()">Copy</button>
-    <button class="download">Download</button>
-
-    <script>
-        function goBack() {
-          window.history.back();
-        }
-      
-        function copyText() {
-          var text = document.getElementById("cardText").innerText;
-          navigator.clipboard.writeText(text).then(function() {
-            console.log("Text copied to clipboard");
-            // Change button text to "Copied!"
-            document.getElementById("copyButton").innerText = "Copied!";
-            // Reset button text after 2 seconds
-            setTimeout(function() {
-              document.getElementById("copyButton").innerText = "Copy";
-            }, 2000);
-          }, function(err) {
-            console.error('Error copying text: ', err);
-          });
-        }
-      </script>
+    <h1 class="title">Astra | Scripts | Blade Ball</h1>
 
 
-<footer>
-    &copy; 2024 Astra. All rights reserved.
-</footer>
-      
 </body>
-</html>
